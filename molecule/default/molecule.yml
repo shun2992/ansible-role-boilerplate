@@ -4,9 +4,12 @@ dependency:
 driver:
   name: docker
 platforms:
-  - name: instance
-    image: docker.io/pycontribs/centos:8
+  - name: ansible-role-boilerplate-instance
+    image: ghcr.io/shun2992/${MOLECULE_DISTRO:-ubuntu-focal}-molecule:latest
+    volumes:
+      - /sys/fs/cgroup:/sys/fs/cgroup:ro
     pre_build_image: true
+    privileged: true
 provisioner:
   name: ansible
 verifier:
